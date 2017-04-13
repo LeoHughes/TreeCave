@@ -3,7 +3,7 @@
   <scroll-view scroll-y="true" style="height:{{scrollHeight}}px;" bindscrolltolower="down">
 
     <view class="leaf" wx:for="{{dataArr}}" wx:key="{{index}}">
-        <view class="leaf-header" wx:if="{{item.userType !== 0}}">
+        <view class="leaf-header" wx:if="{{item.isAnonymous !== true}}">
           <image src="{{item.avatarUrl}}" mode="scaleToFill"></image>
           <text class="user-name">{{item.nickName}}</text>
         </view>
@@ -24,7 +24,7 @@
         </view>
     </view>
 
-    <view class="over" wx:if="{{dataArr.length === length}}">
+    <view class="over" wx:if="{{dataArr.length === length && hidden === true}}">
       <text>已加载完毕</text>
     </view>
 

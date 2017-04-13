@@ -1,6 +1,52 @@
 //公用方法
 
 module.exports = {
+  /**检测类型 */
+  _testType(obj){
+    return Object.prototype.toString.call(obj);
+  },
+
+  /**检测类型是否是Null、undefined或者'' */
+  isNull(obj){
+    return obj === '' || obj === undefined || obj === null ? true : false;
+  },
+
+  /**检测类型是否是Array */
+  isArray(arr){
+    const typeName = '[object Array]';
+    return (this._testType(arr) === typeName);
+  },
+
+  /**检测类型是否是Function */
+  isFunction(func){
+    const typeName = '[object Function]';
+    return (this._testType(func) === typeName);
+  },
+
+  /**检测类型是否是Object */
+  isObject(obj){
+    const typeName = '[object Object]';
+    return (this._testType(obj) === typeName);
+  },
+
+  /**检测类型是否是String */
+  isString(str){
+    const typeName = '[object String]';
+    return (this._testType(str) === typeName);
+  },
+
+  /**检测类型是否是Number */
+  isNumber(num){
+    const typeName = '[object Number]';
+    return (this._testType(num) === typeName);
+  },
+
+  /**检测类型是否是Boolean */
+  isBoolean(flag){
+    const typeName = '[object Boolean]';
+    return (this._testType(flag) === typeName);
+  },
+
   /**
    * 以数组返回当前时间[年月日]
    *

@@ -16,7 +16,7 @@ page>scroll-view {
     padding: 20rpx;
     margin: 40rpx 0 24rpx 0;
     background-color: #fff;
-    animation: show .6s;
+    animation: show .3s;
 }
 
 @keyframes show {
@@ -92,6 +92,7 @@ page>scroll-view {
 }
 
 .over{
+    margin: 15rpx 0;
     text-align: center;
     font-size: 30rpx;
     color: #fff;

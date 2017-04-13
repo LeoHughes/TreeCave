@@ -1,9 +1,13 @@
+//导入公用方法
+const util = require('../../utils/util');
+
 //获得app实例
 const app = getApp();
 
 //页码和条数
-let s_index = 0;
-let e_index = 4;
+let rows = 5;     //条数
+let start = 0;  //开始下标
+let end = 4;  //结束下标
 
 //获取数据列表
 let getList = function (that) {
@@ -12,19 +16,19 @@ let getList = function (that) {
     hidden: false
   });
 
-  app.leaves.orderByKey().startAt(s_index + '').endAt(e_index + '').on("value", function (snapshot) {
+  app.leaves.orderByKey().startAt(start + '').endAt(end + '').on("value", function (snapshot) {
 
-    if (snapshot.val() === null || that.data.dataArr.length >= that.data.length) {
+    if (snapshot.val() === null) {
 
       that.setData({
         hidden: true
       });      
 
-      wx.showModal({
-        title: '提示',
-        content: '已加载完毕',
-        showCancel: false
-      })
+      // wx.showModal({
+      //   title: '提示',
+      //   content: '已加载完毕',
+      //   showCancel: false
+      // })
 
     } else {
       
@@ -32,17 +36,23 @@ let getList = function (that) {
       let res_data = snapshot.val();
       let len = res_data.length;
 
-      for (var i = 0; i < len; i++) {
-        if(res_data[i]) list.push(res_data[i]);
+      //如果是对象则表明是最后一条      
+      if (util.isObject(res_data)) {
+        list.push(res_data[that.data.length - 1]);
+      } else {
+        let len = res_data.length;
+
+        for (var i = 0; i < len; i++) {
+          if(res_data[i]) list.push(res_data[i]);
+        }
       }
 
       that.setData({
         dataArr: list
       });
 
-      s_index = e_index + 1;
-
-      e_index = s_index + e_index;
+      start = end + 1;
+      end = (start + rows) - 1;
 
       that.setData({
         hidden: true
@@ -75,12 +85,12 @@ Page({
       }
     });
 
-    //获取数据总条数    
-    app.leaves.orderByKey().on('value', function (snapshot) {
+    //获取数据总条数   
+    app.getLength(function (len) {
       that.setData({
-        length: snapshot.val().length
-      })
-    });
+        length: len
+      })      
+    })
 
   },
   onShow: function () {

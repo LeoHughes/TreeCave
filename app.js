@@ -18,5 +18,22 @@ App({
 
     this.leaves = baseData.getref();
 
+  },
+  getLength: function (cb) {
+    var that = this;
+
+    if(that.globalData.dataLength){
+      typeof cb == "function" && cb(that.globalData.dataLength)
+    } else {
+      
+    //获取数据总条数    
+    that.leaves.orderByKey().on('value', function (snapshot) {
+      that.globalData.dataLength = snapshot.val().length;
+      typeof cb == "function" && cb(that.globalData.dataLength)
+    });      
+    }   
+  },
+  globalData:{
+    dataLength: 0
   }
 })

@@ -1,22 +1,26 @@
 //导入公用方法
 const util = require('../../utils/util');
 
-//提交数据
-let rqData = {
-  "id": "",
-  "content": "",      //发布的内容
-  "date": "",         //发布时间
-  "isAnonymous": 0,   //发布者类型，0 匿名，1 非匿名
-  "nickName": "",     //发布者昵称
-  "avatarUrl": ""     //用户头像
-};
+//获得app实例
+const app = getApp();
 
+
+class leafData {
+  constructor(content, isAnonymous, nickName, avatarUrl) {
+    this.id = util.now();
+    this.date = util.getDate() + ' ' + util.getTimes();
+    this.content = util.filterContent(content); //发布的内容
+    this.isAnonymous = isAnonymous;             //发布者类型，0 匿名，1 非匿名
+    this.nickName = nickName;                   //发布者昵称
+    this.avatarUrl = avatarUrl;                 //发布者头像
+  }
+}
 
 Page({
   data: {
     userInfo: {},
-    infoText: '请不要发布带有敏感词的信息，谢谢。',     //提示文字
-    inputLen: 0,      //当前输入字符长度
+    infoText: '请不要发布带有敏感词的信息，谢谢。', //提示文字
+    inputLen: 0, //当前输入字符长度
     isAnonymous: true //默认匿名 0匿名 1非匿名
   },
   onLoad: function () {
@@ -39,27 +43,37 @@ Page({
   sumbit: function (e) {
 
     if (this.data.inputLen === 0) {
-      this.setData({
-        infoText: '请输入内容！'
-      });
+      this.setData({infoText: '请输入内容！'});
 
       return;
     }
 
-    rqData.id = util.now();
-    
-    rqData.content = filterWords(util.filterContent(e.detail.value.content));
+    let rqData = new leafData(e.detail.value.content, this.data.isAnonymous, this.data.userInfo.nickName, this.data.userInfo.avatarUrl);
 
-    rqData.date = util.getDate() + '' + util.getTimes();
+    console.log(rqData);
 
-    rqData.isAnonymous = this.data.isAnonymous;
-
-    rqData.nickName = this.data.userInfo.nickName;
-
-    rqData.avatarUrl = this.data.userInfo.avatarUrl;
-
-    console.log(i);
-
+    app.getLength(function (len) {
+      app.leaves.child(len).set(rqData, function (err) {
+        if (!err) {
+          wx.showModal({
+            title: '提示',
+            content: '提交成功',
+            showCancel: false,
+            success: function(res) {
+              if (res.confirm) {
+                wx.switchTab({url: '/pages/index/index'})
+              }
+            }
+          })
+        } else {
+          wx.showModal({
+            title: '提示',
+            content: '提交失败，请检查网络状态',
+            showCancel: false
+          })
+        }
+      })
+    })
   },
   //取消
   cancel: function (e) {
