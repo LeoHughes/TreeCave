@@ -35,10 +35,12 @@ let getList = function (that) {
       let list = that.data.dataArr;
       let res_data = snapshot.val();
       let len = res_data.length;
-
+      
       //如果是对象则表明是最后一条      
       if (util.isObject(res_data)) {
-        list.push(res_data[that.data.length - 1]);
+        for (let i in res_data) {
+          list.push(res_data[i]);
+        }
       } else {
         let len = res_data.length;
 

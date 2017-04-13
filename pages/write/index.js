@@ -50,8 +50,6 @@ Page({
 
     let rqData = new leafData(e.detail.value.content, this.data.isAnonymous, this.data.userInfo.nickName, this.data.userInfo.avatarUrl);
 
-    console.log(rqData);
-
     app.getLength(function (len) {
       app.leaves.child(len).set(rqData, function (err) {
         if (!err) {
