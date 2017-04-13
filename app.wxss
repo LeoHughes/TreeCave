@@ -14,7 +14,7 @@ page>scroll-view {
 
 .leaf {
     padding: 20rpx;
-    margin: 24rpx 0;
+    margin: 40rpx 0 24rpx 0;
     background-color: #fff;
     animation: show .6s;
 }
@@ -81,10 +81,6 @@ page>scroll-view {
 .hugs>.hugs-btn:after{
   content: '';
   border: none;
-}
-
-.hugs>.hugs-btn-active{
-  color: #00cc00;
 }
 
 .leaf-footer>.time {

@@ -1,15 +1,16 @@
 <view>
 	<form bindsubmit="sumbit">
+
+		<view class="form-item">
+			<text>{{infoText}}</text>
+		</view>
+
 		<textarea class="text-area" name="content" placeholder="在此输入" maxlength="200" auto-focus="true" bindinput="inputHandle"></textarea>
 		<text class="input-info">{{inputLen}}/200</text>
 
 		<view class="form-item">
 			<text>是否匿名：</text>
-			<switch name="userType" checked="{{isAnonymous}}" bindchange="isAnonymous"/>
-		</view>
-
-		<view class="form-item">
-			<text>请不要发布带有敏感词的信息，谢谢。</text>
+			<switch name="isAnonymous" checked="{{isAnonymous}}" bindchange="isAnonymous"/>
 		</view>
 
 		<view class="btn-group">
