@@ -1,0 +1,30 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/leaf/index",
+    "pages/myLeaves/index",
+    "pages/write/index"
+  ],
+  "window":{
+    "backgroundTextStyle":"dark",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "TreeCave",
+    "navigationBarTextStyle":"black"
+  },
+ "tabBar": {
+    "backgroundColor": "#fff",
+    "color": "#000",
+    "selectedColor":"#33CC99",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "Leaves"
+    },{
+      "pagePath": "pages/write/index",
+      "text": "✎"
+    },
+     {
+      "pagePath": "pages/myLeaves/index",
+      "text": "Mine"
+    }]
+  }
+}

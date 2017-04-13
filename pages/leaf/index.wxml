@@ -1,0 +1,19 @@
+<view class="leaf">
+		<view class="leaf-header" wx:if="{{leaf.userType !== 0}}">
+			<image src="{{leaf.avatarUrl}}" mode="scaleToFill"></image>
+			<text class="user-name">{{leaf.nickName}}</text>
+		</view>
+
+		<view class="leaf-header" wx:else>
+			<text class="no-name">匿名用户</text>
+		</view>
+
+		<view class="leaf-content">
+			<text>{{leaf.content}}</text>
+		</view>
+
+		<view class="leaf-footer">
+			<view class="hugs"></view>
+			<text class="time">{{leaf.date}}</text>
+		</view>
+</view>
