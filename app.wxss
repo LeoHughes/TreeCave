@@ -14,7 +14,7 @@ page>scroll-view {
 
 .leaf {
     padding: 20rpx;
-    margin: 40rpx 0 24rpx 0;
+    margin: 80rpx 0 18rpx 0;
     background-color: #fff;
     animation: show .3s;
 }
@@ -38,9 +38,9 @@ page>scroll-view {
 
 .leaf-header>image {
     display: inline-block;
-    margin-top: -50rpx;
-    width: 110rpx;
-    height: 110rpx;
+    margin-top: -75rpx;
+    width: 150rpx;
+    height: 150rpx;
     border: 6rpx solid #e9e9e9;
     border-radius: 100%;
 }
