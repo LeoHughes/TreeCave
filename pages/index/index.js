@@ -74,9 +74,9 @@ Page({
     dataArr: [],
     length: 0
   },
-  onLoad: function () {
+  onLoad: function (options) {
 
-    let that = this;
+    let that = this;        
 
     //获取系统信息    
     wx.getSystemInfo({

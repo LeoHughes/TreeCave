@@ -13,13 +13,10 @@
         </view>
 
         <view class="leaf-content">
-          <text>{{item.content}}</text>
+          <text bindtap="show" data-id="{{item.id}}">{{item.content}}</text>
         </view>
 
         <view class="leaf-footer">
-          <view class="hugs">
-            <button class="hugs-btn" hover-class="hugs-btn-active" size="mini" bindtap="show" data-id="{{item.id}}">查看详情</button>
-          </view>
           <text class="time">{{item.date}}</text>
         </view>
     </view>

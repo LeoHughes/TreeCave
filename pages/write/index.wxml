@@ -1,5 +1,5 @@
 <view>
-	<form bindsubmit="sumbit">
+	<form bindsubmit="sumbit" bindreset="reset">
 
 		<view class="form-item">
 			<text>{{infoText}}</text>
@@ -14,7 +14,8 @@
 		</view>
 
 		<view class="btn-group">
-			<button formType="submit" type="default">完成</button>
+			<button formType="submit" type="primary">完成</button>
+			<button formType="reset" type="default">重置</button>
 			<button bindtap="cancel" type="warn">取消</button>
 		</view>
 		

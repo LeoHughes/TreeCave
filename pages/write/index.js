@@ -72,9 +72,13 @@ Page({
         }
       })
     })
+    
+  },
+  reset: function () {
+    
   },
   //取消
   cancel: function (e) {
-    wx.switchTab({url: '/pages/index/index'})
+    // wx.switchTab({url: '/pages/index/index'})
   }
 })
