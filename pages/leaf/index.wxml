@@ -1,19 +1,38 @@
-<view class="leaf">
-		<view class="leaf-header" wx:if="{{leaf.userType !== 0}}">
-			<image src="{{leaf.avatarUrl}}" mode="scaleToFill"></image>
-			<text class="user-name">{{leaf.nickName}}</text>
-		</view>
+<view>
+	<view class="leaf">
+			<view class="leaf-header" wx:if="{{leaf.userType !== 0}}">
+				<image src="{{leaf.avatarUrl}}" mode="scaleToFill"></image>
+				<text class="user-name">{{leaf.nickName}}</text>
+			</view>
 
-		<view class="leaf-header" wx:else>
-			<text class="no-name">匿名用户</text>
-		</view>
+			<view class="leaf-header" wx:else>
+				<text class="no-name">匿名用户</text>
+			</view>
 
-		<view class="leaf-content">
-			<text>{{leaf.content}}</text>
-		</view>
+			<view class="leaf-content">
+				<text>{{leaf.content}}</text>
+			</view>
 
-		<view class="leaf-footer">
-			<view class="hugs"></view>
-			<text class="time">{{leaf.date}}</text>
-		</view>
+			<view class="leaf-footer">
+				<view class="hugs"></view>
+				<text class="time">{{leaf.date}}</text>
+			</view>
+	</view>
+
+	<view>
+		<textarea class="text-area" name="content" placeholder="在此评论" maxlength="100" bindinput="inputHandle"></textarea>
+		<text class="input-info">{{inputLen}}/100</text>
+	</view>
+
+  <view class="leaf" wx:for="{{comments}}" wx:key="{{index}}">
+      <view class="leaf-content">
+				<text>{{item.nickName}}：</text>
+        <text>{{item.content}}</text>
+      </view>
+
+      <view class="leaf-footer">
+        <text class="time">{{item.date}}</text>
+      </view>
+  </view>
+
 </view>

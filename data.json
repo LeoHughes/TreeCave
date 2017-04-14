@@ -1,19 +1,21 @@
 {
-	"leaves": [{
-			"id": "20170413212215",
-			"content": "第1条数据", //发布的内容
-			"date": "2017-03-01", //发布时间
-			"userType": 1, //发布者类型，0 匿名，1 非匿名
-			"nickName": "李修斯", //发布者昵称
-			"avatarUrl": "http://wx.qlogo.cn/mmopen/vi_32/nzmaurnbgGtwfCwpeULFLmlFcOvFjrybzT5h4vAwfXqzdXBZiaxNiaHSotaicEgvupyFae4kg4wf7jIEK1oyKkhGA/0"
-		},
-		{
-			"id": "20170413212245",
-			"content": "第2条数据", //发布的内容
-			"date": "2017-03-02", //发布时间
-			"userType": 0, //发布者类型，0 匿名，1 非匿名
-			"nickName": "李修斯", //发布者昵称
-			"avatarUrl": "http://wx.qlogo.cn/mmopen/vi_32/nzmaurnbgGtwfCwpeULFLmlFcOvFjrybzT5h4vAwfXqzdXBZiaxNiaHSotaicEgvupyFae4kg4wf7jIEK1oyKkhGA/0"
+  "leaves": {
+    "0": {
+      "avatarUrl": "http://wx.qlogo.cn/mmopen/vi_32/u1BSHVZyjqUR1NkAOwT0aOyBQ8VEKl2kJwPrXNSC9WQZdtGjy577uwNb5box9t9gBXBQ58Mb1UO8Yia7dWXkIbQ/0",
+      "content": "继续测试",
+      "date": "2017-04-14 15:58:18",
+      "id": "20170414155818",
+      "isAnonymous": false,
+      "nickName": "韩凌婷"
+    }
+  },
+	"comments": {
+		"20170414155818": {
+			"0": {
+				"content": "评论测试",
+				"date": "2017-04-14 17:00:18",
+				"nickName": "李修斯"
+			}
 		}
-	]
+	}
 }

@@ -18,6 +18,8 @@ App({
 
     this.leaves = baseData.getref();
 
+    this.comments = baseData.getCommentsRef();
+
   },
   //获取数据总条数
   getLength: function (cb) {

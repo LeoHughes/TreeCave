@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view>
   <view class="info">
-    <text>{{nickName}}的发布，下拉刷新查看过往的发布。</text>
+    <text>【{{nickName}}】的发布，下拉刷新查看过往的发布。</text>
   </view>
 
   <view class="leaf" wx:for="{{dataArr}}" wx:key="{{index}}">

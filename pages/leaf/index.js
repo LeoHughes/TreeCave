@@ -8,8 +8,8 @@ let getLeaf = function (that) {
     .leaves
     .orderByChild('id')
     .equalTo(that.data.id)
-    .on('value', function (snaphot) {
-
+    .once('value')
+    .then(function (snaphot) {
       let leaf = snaphot.val();
 
       for (let v in leaf) {
@@ -19,29 +19,53 @@ let getLeaf = function (that) {
           return;
         }
       }
-
+    })
+    .then(function () {
+      getComments(that)
+      //wx.hideNavigationBarLoading();
     })
 
-}
+};
+
+//根据开始结束下标获取评论数据
+let getComments = function (that, cb) {
+  //拉取评论数据
+  app
+    .comments
+    .orderByKey()
+    .equalTo(that.data.id)
+    .on('value', function (snaphot) {
+      let data = snaphot.val();
+
+      that.setData({
+        comments: data[`${that.data.id}`]
+      })
+
+      typeof cd == 'function' && cb()
+    })
+};
 
 Page({
   data: {
     id: '',
-    leaf: {}
+    leaf: {},
+    start: 0,     //开始下标
+    end: 5,       //结束下标
+    comments: [], //评论数据
+    inputLen: 0,  //当前输入字符长度
   },
   onLoad: function (option) {
     let that = this;
 
     that.setData({id: option.id});
 
+    //loading
+    wx.showNavigationBarLoading();
+
     getLeaf(that)
   },
-  onShareAppMessage: function () {
-    let that = this;
-
-    return app.sharePage(
-      `${that.data.leaf.content.substr(0, 10)}...`,
-      `${app.getCurrentPage()._route_}?id=${that.data.id}`
-    )
-  }
+  //检测输入字符长度
+  inputHandle: function (e) {
+    this.setData({inputLen: e.detail.value.length})
+  },
 });
