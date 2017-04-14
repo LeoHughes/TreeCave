@@ -4,8 +4,8 @@
 
     <view class="leaf" wx:for="{{dataArr}}" wx:key="{{index}}">
         <view class="leaf-header" wx:if="{{item.isAnonymous !== true}}">
-          <image src="{{item.avatarUrl}}" mode="scaleToFill"></image>
-          <text class="user-name">{{item.nickName}}</text>
+          <image src="{{item.avatarUrl}}" mode="scaleToFill" bindtap="showUser" data-nickName="{{item.nickName}}"></image>
+          <text class="user-name" >{{item.nickName}}</text>
         </view>
 
         <view class="leaf-header" wx:else>

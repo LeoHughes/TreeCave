@@ -21,10 +21,6 @@
     },{
       "pagePath": "pages/write/index",
       "text": "✎"
-    },
-     {
-      "pagePath": "pages/myLeaves/index",
-      "text": "Mine"
     }]
   }
 }

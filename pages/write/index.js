@@ -19,7 +19,7 @@ class leafData {
 Page({
   data: {
     userInfo: {},
-    infoText: '请不要发布带有敏感词的信息，谢谢。', //提示文字
+    infoText: '把所有的不安情绪都仍进这树洞里，任它腐烂新生发芽。', //提示文字
     inputLen: 0, //当前输入字符长度
     isAnonymous: true //默认匿名 0匿名 1非匿名
   },

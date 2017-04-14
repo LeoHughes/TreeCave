@@ -96,6 +96,12 @@ Page({
       url: '/pages/leaf/index?id=' + e.target.dataset.id
     })
   },
+  //查看用户
+  showUser: function (e) {
+    wx.navigateTo({
+      url: '/pages/myLeaves/index?nickName=' + e.target.dataset.nickname
+    })
+  },
   //分享
   onShareAppMessage: function () {
     let that = this;
