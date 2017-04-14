@@ -12,9 +12,11 @@ let getLeaf = function (that) {
 
       let leaf = snaphot.val();
 
-      for (let value of leaf) {
-        if (value) {
-          that.setData({leaf: value})
+      
+      
+      for (let v in leaf) {
+        if (leaf[v]) {
+          that.setData({leaf: leaf[v]})
 
           return;
         }

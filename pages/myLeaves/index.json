@@ -1,3 +1,4 @@
 {
-    "navigationBarTitleText": "mine"
+    "navigationBarTitleText": "mine",
+    "enablePullDownRefresh": true
 }

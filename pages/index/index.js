@@ -16,7 +16,7 @@ let getList = function (that) {
 
   app
     .leaves
-    .orderByKey()
+    .orderByChild('date')
     .startAt(start + '')
     .endAt(end + '')
     .on("value", function (snapshot) {
@@ -45,7 +45,7 @@ let getList = function (that) {
             }
           }
 
-        that.setData({dataArr: list});
+        that.setData({dataArr: list.reverse()});
 
         start = end + 1;
         end = (start + rows) - 1;
