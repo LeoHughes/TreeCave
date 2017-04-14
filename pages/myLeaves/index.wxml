@@ -1,6 +1,35 @@
-<!--logs.wxml-->
-<view class="container log-list">
-  <block wx:for="{{logs}}" wx:for-item="log" wx:key="*this">
-    <text class="log-item">{{index + 1}}. {{log}}</text>
-  </block>
+<!--index.wxml-->
+<view>
+  <scroll-view scroll-y="true" style="height:{{scrollHeight}}px;" bindscrolltolower="down">
+
+    <view class="leaf" wx:for="{{dataArr}}" wx:key="{{index}}">
+        <view class="leaf-header" wx:if="{{item.isAnonymous !== true}}">
+          <image src="{{item.avatarUrl}}" mode="scaleToFill"></image>
+          <text class="user-name">{{item.nickName}}</text>
+        </view>
+
+        <view class="leaf-header" wx:else>
+          <text class="no-name">匿名用户</text>
+        </view>
+
+        <view class="leaf-content">
+          <text bindtap="show" data-id="{{item.id}}">{{item.content}}</text>
+        </view>
+
+        <view class="leaf-footer">
+          <text class="time">{{item.date}}</text>
+        </view>
+    </view>
+
+    <view class="over" wx:if="{{dataArr.length === length && hidden === true}}">
+      <text>已加载完毕</text>
+    </view>
+
+  </scroll-view>
+
+  <view class="body-view">
+    <loading hidden="{{hidden}}">
+        加载中...
+    </loading>
+  </view>
 </view>
