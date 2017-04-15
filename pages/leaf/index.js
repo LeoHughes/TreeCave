@@ -44,6 +44,8 @@ let getComments = function (that) {
       
       let data = snaphot.val();
 
+      delete data.date;
+
       that.setData({
         comments: data
       })

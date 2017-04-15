@@ -1,6 +1,6 @@
 <view>
 	<view class="leaf">
-			<view class="leaf-header" wx:if="{{leaf.userType !== 0}}">
+			<view class="leaf-header" wx:if="{{leaf.isAnonymous !== true}}">
 				<image src="{{leaf.avatarUrl}}" mode="scaleToFill"></image>
 				<text class="user-name">{{leaf.nickName}}</text>
 			</view>
