@@ -51,58 +51,6 @@ let getList = function (that) {
 
     })
 
-
-  // if (end >= max) end = max;  
-
-  // console.log('开始下标:' + start);
-  // console.log('结束下标:' + end);
-
-  // app
-  //   .leaves
-  //   .orderByChild('number')
-  //   .startAt(start)
-  //   .endAt(end)
-  //   .on("value", function (snapshot) {
-
-  //     if (snapshot.val() === null) {
-
-  //       that.setData({hidden: true});
-
-  //     } else {
-
-  //       let list = that.data.dataArr;
-  //       let res_data = snapshot.val();
-  //       console.dir(res_data)
-  //       let len = res_data.length;
-
-  //       //如果是对象则表明是最后一条
-  //       if (util.isObject(res_data)) {
-  //         for (let i in res_data) {
-  //           list.push(res_data[i]);
-  //         }
-  //       } else {
-  //         let len = res_data.length;
-
-  //         for (var i = 0; i < len; i++) {
-  //           if (res_data[i]) 
-  //             list.push(res_data[i]);
-  //           }
-  //       }
-        
-  //       start = end + 1;
-  //       end = (start + rows) - 1;
-
-  //       that.setData({
-  //         hidden: true,
-  //         dataArr: list.reverse(),
-  //         start: start,
-  //         end: end
-  //       });
-
-  //     }
-
-  //   });
-
 }
 
 Page({
