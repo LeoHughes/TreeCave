@@ -1,3 +1,4 @@
 {
-    "navigationBarTitleText": "Leaf"
+    "navigationBarTitleText": "Leaf",
+    "enablePullDownRefresh": true
 }

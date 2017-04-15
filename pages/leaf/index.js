@@ -1,3 +1,6 @@
+//导入公用方法
+const util = require('../../utils/util');
+
 //获得app实例
 const app = getApp();
 
@@ -21,27 +24,30 @@ let getLeaf = function (that) {
       }
     })
     .then(function () {
-      getComments(that)
-      //wx.hideNavigationBarLoading();
+      getComments(that);
+
+      setTimeout(function() {
+        wx.hideNavigationBarLoading();
+      }, 800);      
     })
 
 };
 
 //根据开始结束下标获取评论数据
-let getComments = function (that, cb) {
+let getComments = function (that) {
   //拉取评论数据
   app
     .comments
-    .orderByKey()
-    .equalTo(that.data.id)
+    .child(that.data.id)
+    .limitToLast(that.data.end)
     .on('value', function (snaphot) {
+      
       let data = snaphot.val();
 
       that.setData({
-        comments: data[`${that.data.id}`]
+        comments: data
       })
 
-      typeof cd == 'function' && cb()
     })
 };
 
@@ -68,4 +74,11 @@ Page({
   inputHandle: function (e) {
     this.setData({inputLen: e.detail.value.length})
   },
+  onPullDownRefresh: function () {
+    let end = this.data.end + 10;
+
+    this.setData({ end: end });
+
+    getComments(this);
+  }
 });

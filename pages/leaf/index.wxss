@@ -1,5 +1,7 @@
-.comment-box{
-	position: fixed;
-	bottom: 0;
-	left: 0;
+.comment-nav{
+	text-align: center;
+}
+
+.comment{
+	margin: 18rpx 0;
 }

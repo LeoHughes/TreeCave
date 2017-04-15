@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/leaf/index",
     "pages/myLeaves/index",
-    "pages/write/index"
+    "pages/write/index",
+    "pages/writeComment/index"
   ],
   "window":{
     "backgroundTextStyle":"dark",
@@ -20,7 +21,7 @@
       "text": "Leaves"
     },{
       "pagePath": "pages/write/index",
-      "text": "✎"
+      "text": "Write"
     }]
   }
 }

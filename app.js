@@ -1,3 +1,7 @@
+//导入公用方法
+const util = require('./utils/util');
+
+//导入数据
 let baseData = require('./utils/data')
 
 //app.js
@@ -33,7 +37,11 @@ App({
         .leaves
         .orderByKey()
         .on('value', function (snapshot) {
-          that.globalData.dataLength = snapshot.val().length;
+          let leavesData = snapshot.val();
+
+          leavesData === null ? (leavesData = {}) : leavesData;
+
+          that.globalData.dataLength = util.size(leavesData);
           typeof cb == "function" && cb(that.globalData.dataLength)
         });
     }

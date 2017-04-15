@@ -12,6 +12,11 @@ let end = 4; //结束下标
 //获取数据列表
 let getList = function (that) {
 
+  if (end >= that.data.length) end = that.data.length;  
+
+  console.log('开始下标:' + start);
+  console.log('结束下标:' + end);
+
   that.setData({hidden: false});
 
   app
@@ -29,6 +34,7 @@ let getList = function (that) {
 
         let list = that.data.dataArr;
         let res_data = snapshot.val();
+        console.dir(res_data)
         let len = res_data.length;
 
         //如果是对象则表明是最后一条
@@ -77,18 +83,18 @@ Page({
 
     //获取数据总条数
     app.getLength(function (len) {
-      that.setData({length: len})
+      that.setData({ length: len });
+      console.log(that.data.length);
+      getList(that);
     })
 
   },
   onShow: function () {
-    let that = this;
-    getList(that);
+    getList(this);
   },
   //下拉刷新数据
   down: function () {
-    let that = this;
-    getList(that);
+    getList(this);
   },
   //查看详细
   show: function (e) {

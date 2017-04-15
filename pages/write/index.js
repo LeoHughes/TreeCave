@@ -50,28 +50,30 @@ Page({
 
     let rqData = new leafData(e.detail.value.content, this.data.isAnonymous, this.data.userInfo.nickName, this.data.userInfo.avatarUrl);
 
-    app.getLength(function (len) {
-      app.leaves.child(len).set(rqData, function (err) {
-        if (!err) {
-          wx.showModal({
-            title: '提示',
-            content: '提交成功',
-            showCancel: false,
-            success: function(res) {
-              if (res.confirm) {
-                wx.switchTab({url: '/pages/index/index'})
-              }
-            }
-          })
-        } else {
-          wx.showModal({
-            title: '提示',
-            content: '提交失败，请检查网络状态',
-            showCancel: false
-          })
-        }
+    app
+      .leaves
+      .push(rqData)
+      .then(function () {
+
+        //添加对应的评论节点
+        app.comments.child(rqData.id).set({})
+
+        wx.showToast({
+          title: '提交成功',
+          icon: 'success',
+          complete: function () {
+            setTimeout(function() {
+              wx.switchTab({url: '/pages/index/index'})
+            }, 1000);
+          }
+        })
       })
-    })
+      .catch(function () {
+        wx.showToast({
+          title: '提交失败，请检查网络状态!',
+          icon: 'loading'
+        })
+      })
     
   },
   reset: function () {
@@ -79,6 +81,6 @@ Page({
   },
   //取消
   cancel: function (e) {
-    // wx.switchTab({url: '/pages/index/index'})
+    wx.switchTab({ url: '/pages/index/index' });
   }
 })

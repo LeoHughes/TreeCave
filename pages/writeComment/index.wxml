@@ -1,0 +1,17 @@
+<view>
+	<form bindsubmit="sumbit">
+
+		<view class="form-item">
+			<text>{{infoText}}</text>
+		</view>
+
+		<textarea class="text-area" name="content" placeholder="在此输入" maxlength="100" auto-focus="true" bindinput="inputHandle"></textarea>
+		<text class="input-info">{{inputLen}}/100</text>
+
+		<view class="btn-group">
+			<button formType="submit" type="primary">完成</button>
+			<button bindtap="cancel" type="warn">取消</button>
+		</view>
+		
+	</form>
+</view>
