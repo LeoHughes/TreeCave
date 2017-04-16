@@ -8,29 +8,31 @@ const app = getApp();
 //获取数据列表
 let getList = function (that) {
 
-  if (that.data.dataArr.length === that.data.length) {
+  let list = that.data.dataArr;
+
+  //页码和条数
+  let rows = that.data.rows; //条数
+  let start = that.data.start; //开始下标
+  let end = that.data.end; //结束下标
+  let max = that.data.length;
+
+  if (list.length >= that.data.length) {
     return;
   }
 
   //loading
   that.setData({hidden: false});
 
-  //页码和条数
-  let rows = that.data.rows; //条数
-  let start = that.data.start; //开始下标
-  let end = that.data.end; //结束下标
-  let max = that.data.length;  
-
   app
     .leaves
     .orderByChild('number')
     .startAt(start)
     .endAt(end)
-    .on("value", function (snapshot) { 
-      
-      let list = that.data.dataArr;
+    .once('value')
+    .then(function (snapshot) {
+
       let resData = snapshot.val();
-      
+
       for (let v in resData) {
         list.push(resData[v])
       };
@@ -42,13 +44,22 @@ let getList = function (that) {
         end = (start + rows) - 1; 
       }
 
+      //过滤重复数据
+      list = util.colUnique(list);
+
       that.setData({
         hidden: true,
         dataArr: list,
         start: start,
         end: end
-      });      
-
+      });
+    })
+    .catch(function (err) {
+      wx.showModal({
+        title: '出错了',
+        content: err.toString(),
+        showCancel: false
+      })
     })
 
 }
@@ -63,7 +74,7 @@ Page({
     start: 0,  //开始下标
     end: 4     //结束下标
   },
-  onLoad: function (options) {
+  onLoad: function () {
 
     let that = this;
 
@@ -81,9 +92,6 @@ Page({
       getList(that);
     })
 
-  },
-  onShow: function () {
-    getList(this);
   },
   //下拉刷新数据
   down: function () {

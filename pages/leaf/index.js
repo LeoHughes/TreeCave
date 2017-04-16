@@ -39,16 +39,18 @@ let getComments = function (that) {
   app
     .comments
     .child(that.data.id)
-    .limitToLast(that.data.end)
+    .limitToFirst(that.data.end)
     .on('value', function (snaphot) {
       
       let data = snaphot.val();
 
-      delete data.date;
+      if (data) { 
+        delete data.date;
 
-      that.setData({
-        comments: data
-      })
+        that.setData({
+          comments: data
+        })
+      }
 
     })
 };

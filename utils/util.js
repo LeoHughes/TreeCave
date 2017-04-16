@@ -183,6 +183,23 @@ module.exports = {
     }
 
     return length;
+  },
+
+  /**
+   * 数组去除重复对象
+   * 
+   */
+  colUnique(arr){
+    let output = {};
+
+    arr.map((v)=>{
+      output[JSON.stringify(v)] = 'z';
+    })
+
+    return this.keys(output).map((v)=>{
+      return JSON.parse(v);
+    });
+
   }
 
 }
